@@ -17,5 +17,6 @@ app.post('/user', validateUser, usersController.createUser);
 app.use(verifyJwt);
 
 app.get('/user', usersController.getAllUsers);
+app.get('/user/:id', usersController.getByIdUser);
 
 module.exports = app;
