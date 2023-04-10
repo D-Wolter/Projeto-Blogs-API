@@ -20,5 +20,6 @@ app.use(verifyJwt);
 app.get('/user', usersController.getAllUsers);
 app.get('/user/:id', usersController.getByIdUser);
 app.post('/categories', categoryController.createCategory);
+app.get('/categories', categoryController.getAllCategories);
 
 module.exports = app;
