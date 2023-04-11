@@ -24,8 +24,34 @@ const postById = async (req, res) => {
     res.status(200).json(post);
 };
 
+const postUpdate = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, content } = req.body;
+    const { user } = req;
+    const bodyValid = title && content;
+  
+    if (!bodyValid) {
+      return res.status(400).json({ message: 'Some required fields are missing' });
+    }
+
+    const post = await postService.postById(id);
+
+    if (post.user_id !== user.id) {
+      return res.status(401).json({ message: 'Unauthorized user' });
+    }
+
+    const updatedPost = await postService.updatePost(id, { title, content });
+    
+    return res.status(200).json(updatedPost);
+    } catch (err) {
+      return res.status(500).json({ message: 'Erro interno', error: err.message });
+  }
+};
+
 module.exports = {
     createPost,
     allPosts,
-    postById,  
+    postById,
+    postUpdate,
 };

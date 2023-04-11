@@ -43,8 +43,20 @@ const createPost = async (title, content, categoryIds) => {
     return newBlogPost;
     };
 
+    const updatePost = async (id, { title, content }) => {
+        const post = await postById(id);
+      
+        post.title = title;
+        post.content = content;
+        post.updated = new Date();
+        const updatedPost = await post.save();
+        
+        return updatedPost;
+      };
+
     module.exports = { 
         allPost,
         postById,
         createPost,
+        updatePost,
     };
