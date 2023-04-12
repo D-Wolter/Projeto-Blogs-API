@@ -32,10 +32,13 @@ const createUser = async (req, res) => {
   try {
     const { displayName, email, password, image } = req.body;
     const user = await usersService.createUser({ displayName, email, password, image });
+    const jwtConfig = {
+      expiresIn: '7d',
+      algorithm: 'HS256',
+    };
+    const token = jwt.sign({ data:
+      { email: user.email, id: user.id } }, process.env.JWT_SECRET, jwtConfig);
 
-    const token = jwt.sign({ data: { user: user.id } }, secret, {
-      expiresIn: '1h',
-    });
     res.status(201).json({ token });
   } catch (err) {
     return res.status(500).json({ message: err.message });

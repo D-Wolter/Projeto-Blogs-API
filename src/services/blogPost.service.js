@@ -24,7 +24,7 @@ const postById = async (id) => {
     return post;
 };
 
-const createPost = async (title, content, categoryIds) => {
+const createPost = async (userId, title, content, categoryIds) => {
     const requiredInput = [title, content, categoryIds];
 
     if (requiredInput.some((field) => !field) || !categoryIds.length) {
@@ -37,7 +37,7 @@ const createPost = async (title, content, categoryIds) => {
     throw new Error('one or more "categoryIds" not found');
     }
     
-    const newBlogPost = await BlogPost.create({ title, content });
+    const newBlogPost = await BlogPost.create({ title, content, userId });
     await newBlogPost.addCategories(categories);
     
     return newBlogPost;
