@@ -25,16 +25,10 @@ module.exports = {
         onDelete: 'CASCADE',
       },
       published: {
-        allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: new Date(),
-        onUpdate: 'NO ACTION',
       },
       updated: {
-        allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: new Date(),
-        onUpdate: new Date(),
       }
     });
   },
