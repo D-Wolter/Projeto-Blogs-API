@@ -37,8 +37,9 @@ const postUpdate = async (req, res) => {
     }
 
     const post = await postService.postById(id);
+    console.log('+++++', post.dataValues.userId);
 
-    if (post.user_id !== user.id) {
+    if (post.dataValues.userId !== user.data.user) {
       return res.status(401).json({ message: 'Unauthorized user' });
     }
 
