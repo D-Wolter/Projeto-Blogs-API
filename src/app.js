@@ -26,5 +26,5 @@ app.post('/post', blogPostController.createPost);
 app.get('/post', blogPostController.allPosts);
 app.get('/post/:id', blogPostController.postById);
 app.put('/post/:id', blogPostController.postUpdate);
-
+app.delete('/post/:id', blogPostController.removePost);
 module.exports = app;

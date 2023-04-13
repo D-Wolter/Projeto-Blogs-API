@@ -37,8 +37,6 @@ const postUpdate = async (req, res) => {
     }
 
     const post = await postService.postById(id);
-    console.log('+++++', post.dataValues.userId);
-
     if (post.dataValues.userId !== user.data.user) {
       return res.status(401).json({ message: 'Unauthorized user' });
     }
@@ -51,9 +49,22 @@ const postUpdate = async (req, res) => {
   }
 };
 
+const removePost = async (req, res) => {
+  const { id } = req.params;
+  const { user } = req;
+  const post = await postService.postById(id);
+  if (!post) return res.status(404).json({ message: 'Post does not exist' });
+  if (post.dataValues.userId !== user.data.user) {
+  return res.status(401).json({ message: 'Unauthorized user' });
+  }
+  await postService.removePost(id);
+  return res.status(204).json();
+};
+
 module.exports = {
     createPost,
     allPosts,
     postById,
     postUpdate,
+    removePost,
 };

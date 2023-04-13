@@ -20,7 +20,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ data: { user: response.id } }, secret, {
-      expiresIn: '1h',
+      expiresIn: '28d',
     });
     res.status(200).json({ token });
   } catch (err) {
@@ -33,7 +33,7 @@ const createUser = async (req, res) => {
     const { displayName, email, password, image } = req.body;
     const user = await usersService.createUser({ displayName, email, password, image });
     const jwtConfig = {
-      expiresIn: '7d',
+      expiresIn: '28d',
       algorithm: 'HS256',
     };
     const token = jwt.sign({ data:
