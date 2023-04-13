@@ -20,6 +20,7 @@ app.use(verifyJwt);
 
 app.get('/user', usersController.getAllUsers);
 app.get('/user/:id', usersController.getByIdUser);
+app.delete('/user/me', usersController.removeUser);
 app.post('/categories', categoryController.createCategory);
 app.get('/categories', categoryController.getAllCategories);
 app.post('/post', blogPostController.createPost);
