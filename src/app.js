@@ -14,6 +14,7 @@ app.get('/', (_request, response) => {
 app.use(express.json());
 
 app.post('/login', usersController.login);
+
 app.post('/user', validateUser, usersController.createUser);
 
 app.use(verifyJwt);
@@ -21,8 +22,10 @@ app.use(verifyJwt);
 app.get('/user', usersController.getAllUsers);
 app.get('/user/:id', usersController.getByIdUser);
 app.delete('/user/me', usersController.removeUser);
+
 app.post('/categories', categoryController.createCategory);
 app.get('/categories', categoryController.getAllCategories);
+
 app.post('/post', blogPostController.createPost);
 app.get('/post', blogPostController.allPosts);
 app.get('/post/search', blogPostController.postSearchTerm);
