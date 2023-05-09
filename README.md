@@ -1,7 +1,7 @@
 
 # Projeto Blogs API
 
-Projeto realizado durante módulo de Back-end do curso de desenvolvimento web da Trybe.
+Projeto realizado durante módulo de Back-end do curso de desenvolvimento web da Trybe, O objetivo era construir um aplicativo Node.js usando o pacote Sequelize para criar um CRUD para posts. Desenvolva pontos de extremidade conectados ao banco de dados seguindo os princípios do REST. Para fazer um post, foi necessário trabalhar a relação entre usuário e post.
 
 <details>
   <summary><strong>O que foi feito</strong></summary></br>
